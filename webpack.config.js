@@ -59,7 +59,10 @@ const config = {
         'NODE_ENV': JSON.stringify('production')
       }
     }),
-    new webpack.NoEmitOnErrorsPlugin()
+    new webpack.NoEmitOnErrorsPlugin(),
+    new webpack.ProvidePlugin({
+      fetch: 'imports-loader?this=>global!exports-loader?global.fetch!whatwg-fetch'
+    })
   ]
 };
 
