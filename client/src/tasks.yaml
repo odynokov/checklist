@@ -1,0 +1,61 @@
+
+- id: 1
+  name: 'Проверка настроек robots.txt'
+
+  children:
+    - id: 2
+      name: 'Спецсимволы'
+      parent_id: 1
+
+    - id: 3
+      name: 'host'
+      parent_id: 1
+
+    - id: 4
+      name: 'sitemap.xml'
+      parent_id: 1
+
+    - id: 5
+      name: 'наличие пустой строки между группой User-Agent / Disallow'
+      parent_id: 1
+
+    - id: 6
+      name: 'Clean-param (Яндекс)'
+      parent_id: 1
+
+    - id: 7
+      name: 'Разрешение на идексацию css/js'
+      parent_id: 1
+
+- id: 8
+  name: 'sitemap.xml'
+
+  children:
+    - id: 9
+      name: 'xml карта для мультимедийного контента'
+      parent_id: 8
+
+
+    - id: 10
+      name: 'ссылки с ответом сервера 4xx'
+      parent_id: 8
+
+    - id: 11
+      name: 'ссылки с ответом сервера 5xx'
+      parent_id: 8
+
+    - id: 12
+      name: 'ссылки с редиректом'
+      parent_id: 8
+
+    - id: 13
+      name: 'ссылки на страницы, закрытые в robots.txt'
+      parent_id: 8
+
+- id: 14
+  name: 'sitemap.html'
+
+
+
+
+
