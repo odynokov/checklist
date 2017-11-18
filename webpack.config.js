@@ -6,7 +6,8 @@ const config = {
   entry: path.resolve('client/src/bootstrap.js'),
   output: {
     path: path.resolve('dist'),
-    filename: 'main.js'
+    filename: 'main.js',
+    publicPath: '/'
   },
 
   module: {

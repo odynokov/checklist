@@ -1,7 +1,7 @@
 import React from 'react';
 import tasks from './tasks.yaml';
 
-const __KEY__ = '__checklist__';
+const __KEY__ = 'checklist:tasks:done';
 
 const local = JSON.parse(localStorage.getItem(__KEY__));
 
@@ -30,7 +30,7 @@ export default WrappedComponent => class AppContainer extends React.Component {
   }
 
   onTaskClick = id => () => {
-    fetch(`/dist/docs/${id}.md`)
+    fetch(`/docs/${id}.md`)
       .then(response => {
         if (response.status < 200 || response.status >= 400) {
           throw new Error('There is no description');
