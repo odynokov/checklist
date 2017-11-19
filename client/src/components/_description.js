@@ -5,12 +5,11 @@ import AppBar from 'material-ui/AppBar';
 import Toolbar from 'material-ui/Toolbar';
 import Typography from 'material-ui/Typography';
 import Slide from 'material-ui/transitions/Slide';
-import CloseIcon from 'material-ui-icons/Close';
-import Grid from 'material-ui/Grid';
 import Paper from 'material-ui/Paper';
 import Markdown from 'react-markdown';
 import IconButton from 'material-ui/IconButton';
 import {withStyles} from 'material-ui/styles';
+import Add from './plus-icon';
 
 function Transition(props) {
   return <Slide direction="up" {...props} />;
@@ -44,7 +43,7 @@ class Description extends React.Component {
         <AppBar position="static">
           <Toolbar>
             <IconButton color="contrast" onClick={this.props.handleRequestClose} aria-label="Close">
-              <CloseIcon />
+              <Add />
             </IconButton>
 
             <Typography type="title" color="inherit">

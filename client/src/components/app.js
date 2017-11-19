@@ -12,7 +12,7 @@ import Select from 'material-ui/Select';
 import {MenuItem} from 'material-ui/Menu';
 import {FormControl} from 'material-ui/Form';
 import Input, {InputLabel} from 'material-ui/Input';
-import AddProjectIcon from 'material-ui-icons/Add';
+import Add from './plus-icon';
 import Snackbar from 'material-ui/Snackbar';
 
 export default class App extends React.Component {
@@ -136,7 +136,11 @@ export default class App extends React.Component {
           fab
           color="primary"
           onClick={this.handleClickOpenCreateDialog}
-        ><AddProjectIcon/></Button>
+        ><Add style={{
+            width: 15,
+            height: 15
+          }}/>
+        </Button>
 
         <Snackbar
           anchorOrigin={{

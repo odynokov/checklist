@@ -1,6 +1,7 @@
 const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 const config = {
   entry: path.resolve('client/src/bootstrap.js'),
@@ -15,7 +16,7 @@ const config = {
         test: /\.js$/,
         enforce: 'pre',
         use: 'eslint-loader',
-        exclude: /node_modules/
+        include: /node_modules/
       },
       {
         test: /\.js/,
@@ -24,21 +25,22 @@ const config = {
       },
       {
         test: /\.css$/,
-        use: [
-          'style-loader',
-          {
-            loader: 'css-loader',
-            options: {
-              sourceMap: true,
-              importLoaders: 1,
-              modules: true,
-              localIdentName: '[name]__[local]_[hash:base64:5]'
+        use: ExtractTextPlugin.extract({
+          fallback: 'style-loader',
+          use: [
+            {
+              loader: 'css-loader',
+              options: {
+                importLoaders: 1,
+                modules: true,
+                localIdentName: '[name]__[local]_[hash:base64:5]'
+              }
+            },
+            {
+              loader: 'postcss-loader'
             }
-          },
-          {
-            loader: 'postcss-loader'
-          }
-        ],
+          ]
+        }),
         exclude: /node_modules/
       },
       {
@@ -52,17 +54,24 @@ const config = {
   plugins: [
     new HtmlWebpackPlugin({
       template: path.resolve('client/src/template.html'),
-      filename: path.join(path.resolve('./dist/index.html'))
-    }),
-    new webpack.DefinePlugin({
-      'process.env': {
-        'NODE_ENV': JSON.stringify('production')
+      filename: path.join(path.resolve('./dist/index.html')),
+      minify: {
+        collapseWhitespace: true,
+        collapseInlineTagWhitespace: true,
+        removeComments: true,
+        removeRedundantAttributes: true
       }
     }),
+    new webpack.EnvironmentPlugin(['NODE_ENV']),
     new webpack.NoEmitOnErrorsPlugin(),
     new webpack.ProvidePlugin({
       fetch: 'imports-loader?this=>global!exports-loader?global.fetch!whatwg-fetch'
-    })
+    }),
+    new ExtractTextPlugin({
+      filename: 'styles.css',
+      allChunks: true
+    }),
+    new webpack.optimize.ModuleConcatenationPlugin()
   ]
 };
 
