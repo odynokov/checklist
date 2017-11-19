@@ -29,3 +29,18 @@
   bottom: 32px;
   right: 32px;
 }
+
+:global pre {
+  background-color: rgba(63, 81, 181, 0.15);
+  padding: 8px 16px;
+  border-left: 4px solid #3f51b5;
+  margin: 32px 0;
+}
+
+:global p > code,
+:global p >kbd,
+:global p > samp {
+  background: rgba(63, 81, 181, 0.15);
+  padding: 2px 4px;
+  border-radius: 2px;
+}

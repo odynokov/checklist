@@ -31,4 +31,5 @@ export function removeProject(project) {
   saved_projects.delete(project);
 
   localStorage.setItem(__PROJECTS_KEY__, JSON.stringify([...saved_projects]));
+  clearDoneTasks(project);
 }

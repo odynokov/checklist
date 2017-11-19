@@ -60,7 +60,7 @@ export default class CreateProjectDialog extends React.Component {
           <Button onClick={this.handleRequestCloseDialog} color="primary">
             Отмена
           </Button>
-          <Button onClick={this.createProject} color="primary">
+          <Button disabled={!this.state.project} onClick={this.createProject} color="primary">
             Создать
           </Button>
         </DialogActions>

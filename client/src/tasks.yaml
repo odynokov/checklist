@@ -29,7 +29,7 @@
       parent_id: 1
 
     - id: 8
-      name: Доступность по расширениям индексного файла
+      name: Расширения индексного файла
       parent_id: 1
 
 - id: 9
@@ -213,11 +213,11 @@
       parent_id: 48
 
     - id: 53
-      name: Другие ошибки согласно Screaming Frog
+      name: Ошибки в Screaming Frog
       parent_id: 48
 
     - id: 54
-      name: Другие ошибки согласно Google Search Console
+      name: Ошибки в Google Search Console
       parent_id: 48
 
 - id: 55
