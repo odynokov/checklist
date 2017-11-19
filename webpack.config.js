@@ -3,7 +3,6 @@ const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const config = {
-  devtool: 'sourcemap',
   entry: path.resolve('client/src/bootstrap.js'),
   output: {
     path: path.resolve('dist'),
