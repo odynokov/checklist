@@ -29,7 +29,7 @@ export default class App extends React.Component {
 
         <main className={styles.main}>
           <Grid container spacing={40}>
-            <Grid item sm={5} className={styles.leftColumn}>
+            <Grid item sm={5} className={styles.column}>
               <Tasks
                 onTaskClick={this.props.onTaskClick}
                 onChange={this.props.onChange}
@@ -39,7 +39,7 @@ export default class App extends React.Component {
               />
             </Grid>
 
-            <Grid item sm={7}>
+            <Grid item sm={7} className={styles.column}>
               <Markdown source={this.props.description}/>
             </Grid>
 

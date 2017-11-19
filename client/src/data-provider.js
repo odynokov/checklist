@@ -16,13 +16,24 @@ export default WrappedComponent => class AppContainer extends React.Component {
   onChange = task => (event, value) => {
     const {saved_tasks} = this.state;
 
+    // отметить или снять отметки с дочерних задачи при работе с родительской
     task.children && task.children.forEach(item => {
       value ? saved_tasks.add(item.id) : saved_tasks.delete(item.id);
     });
 
+    // снять отметку с родительской задачи, при снятии отметки с дочерней
     !value && task.parent_id && saved_tasks.delete(task.parent_id);
 
+    // пометить задачу или снять отметку
     value ? saved_tasks.add(task.id) : saved_tasks.delete(task.id);
+
+    const parent_task = tasks.find(item => item.id === task.parent_id);
+    const all_children_tasks_completed = parent_task
+      && parent_task.children
+      && parent_task.children.every(item => saved_tasks.has(item.id));
+
+    all_children_tasks_completed
+      && saved_tasks.add(parent_task.id);
 
     localStorage.setItem(__KEY__, JSON.stringify([...saved_tasks]));
 

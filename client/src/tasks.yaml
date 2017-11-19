@@ -6,24 +6,31 @@
 
     - id: 2
       name: Регистр
+      parent_id: 1
 
     - id: 3
       name: Разделитель слов
+      parent_id: 1
 
     - id: 4
       name: Friendly url
+      parent_id: 1
 
     - id: 5
       name: Язык
+      parent_id: 1
 
     - id: 6
       name: Множественные спеши/тире в url
+      parent_id: 1
 
     - id: 7
       name: Основное зеркало
+      parent_id: 1
 
     - id: 8
       name: Доступность по расширениям индексного файла
+      parent_id: 1
 
 - id: 9
   name: Проверка настроек robots.txt
@@ -31,24 +38,31 @@
   children:
     - id: 10
       name: Спецсимволы
+      parent_id: 9
 
     - id: 11
       name: host
+      parent_id: 9
 
     - id: 12
       name: sitemap.xml
+      parent_id: 9
 
     - id: 13
       name: наличие пустой строки между группой User-Agent / Disallow
+      parent_id: 9
 
     - id: 14
       name: Clean-param (Яндекс)
+      parent_id: 9
 
     - id: 15
       name: Обязательные страницы для disallow
+      parent_id: 9
 
     - id: 16
       name: Проверяем данные Google Search Console
+      parent_id: 9
 
 - id: 17
   name: sitemap.xml
@@ -56,22 +70,27 @@
   children:
     - id: 18
       name: xml карта для мультимедийного контента
-
+      parent_id: 17
 
     - id: 19
       name: ссылки с ответом сервера 4xx
+      parent_id: 17
 
     - id: 20
       name: ссылки с ответом сервера 5xx
+      parent_id: 17
 
     - id: 21
       name: ссылки с редиректом
+      parent_id: 17
 
     - id: 22
       name: ссылки на страницы, закрытые в robots.txt
+      parent_id: 17
 
     - id: 23
       name: Проверяем данные Google Search Console
+      parent_id: 17
 
 - id: 24
   name: sitemap.html
@@ -82,21 +101,27 @@
   children:
     - id: 26
       name: Хлебные крошки
+      parent_id: 25
 
     - id: 27
       name: Вложенности
+      parent_id: 25
 
     - id: 28
       name: Циклические ссылки
+      parent_id: 25
 
     - id: 29
       name: Внутренняя перелинковка
+      parent_id: 25
 
     - id: 30
       name: Иерархия html заголовков
+      parent_id: 25
 
     - id: 31
       name: Silo - архитектура сайта
+      parent_id: 25
 
 
 
@@ -107,33 +132,43 @@
 
     - id: 33
       name: Использование ssl-сертификата
+      parent_id: 32
 
     - id: 34
       name: Корректность настройки редиректов
+      parent_id: 32
 
     - id: 35
       name: Strict-Transport-Security
+      parent_id: 32
 
     - id: 36
       name: Last-Modified
+      parent_id: 32
 
     - id: 37
       name: If-Modified-Since
+      parent_id: 32
 
     - id: 38
       name: Cache-Control
+      parent_id: 32
 
     - id: 39
       name: Expires
+      parent_id: 32
 
     - id: 40
       name: ETag
+      parent_id: 32
 
     - id: 41
       name: Vary
+      parent_id: 32
 
     - id: 42
       name: X-XSS-Protection и X-Frame-Options
+      parent_id: 32
 
 - id: 43
   name: Пагинация
@@ -142,15 +177,19 @@
 
     - id: 44
       name: canonical для Яндекс
+      parent_id: 43
 
     - id: 45
       name: next/prev для Google
+      parent_id: 43
 
     - id: 46
       name: № страницы в title/desc
+      parent_id: 43
 
     - id: 47
       name: Дубли первой страницы
+      parent_id: 43
 
 - id: 48
   name: Языковые версии
@@ -159,21 +198,27 @@
 
     - id: 49
       name: Наличие hreflang
+      parent_id: 48
 
     - id: 50
       name: корректность url адресов в hreflang
+      parent_id: 48
 
     - id: 51
       name: корректность кода языка
+      parent_id: 48
 
     - id: 52
       name: корректность кода страны
+      parent_id: 48
 
     - id: 53
       name: Другие ошибки согласно Screaming Frog
+      parent_id: 48
 
     - id: 54
       name: Другие ошибки согласно Google Search Console
+      parent_id: 48
 
 - id: 55
   name: Мета-данные
@@ -182,27 +227,35 @@
 
     - id: 56
       name: Отсутствует title
+      parent_id: 55
 
     - id: 57
       name: Дублируется title
+      parent_id: 55
 
     - id: 58
       name: Слишком короткий title
+      parent_id: 55
 
     - id: 59
       name: title совпадает с h1
+      parent_id: 55
 
     - id: 60
       name: Отсутствует description
+      parent_id: 55
 
     - id: 61
       name: Дублируется description
+      parent_id: 55
 
     - id: 62
       name: Слишком короткий description
+      parent_id: 55
 
     - id: 63
       name: Другие ошибки согласно Google Search Console
+      parent_id: 55
 
 - id: 64
   name: Заголовок h1
@@ -211,9 +264,11 @@
 
     - id: 65
       name: Отсутствует h1
+      parent_id: 64
 
     - id: 66
       name: Дублируется h1
+      parent_id: 64
 
 - id: 67
   name: Редиректы и ошибки
@@ -222,9 +277,11 @@
 
     - id: 68
       name: Наличие страниц с ответом сервера 4xx
+      parent_id: 67
 
     - id: 69
       name: Наличие ссылок с 3xx редиректами
+      parent_id: 67
 
 - id: 70
   name: Оформление 404 страницы
@@ -233,18 +290,23 @@
 
     - id: 71
       name: Дизайн страницы совпадает с дизайном сайта
+      parent_id: 70
 
     - id: 72
       name: Есть ссылка на главную страницу и основные разделы
+      parent_id: 70
 
     - id: 73
       name: Есть строка поиска
+      parent_id: 70
 
     - id: 74
       name: Есть информация о том, почему посетитель видит данную страницу
+      parent_id: 70
 
     - id: 75
       name: Ответ кода данной страницы
+      parent_id: 70
 
 - id: 76
   name: Скорость сайта
@@ -253,24 +315,31 @@
 
     - id: 77
       name: Время Start render
+      parent_id: 76
 
     - id: 78
       name: Время first byte
+      parent_id: 76
 
     - id: 79
       name: Оптимизация изображений
+      parent_id: 76
 
     - id: 80
       name: Кеширование
+      parent_id: 76
 
     - id: 81
       name: Keep-Alive
+      parent_id: 76
 
     - id: 82
       name: Корректность встраивания js/css
+      parent_id: 76
 
     - id: 83
       name: Другие проблемы согласно Gtmetrics и GPS
+      parent_id: 76
 
 - id: 84
   name: Оптимизация изображений
@@ -279,9 +348,11 @@
 
     - id: 85
       name: Наличие alt
+      parent_id: 84
 
     - id: 86
       name: Наличие title
+      parent_id: 84
 
 - id: 87
   name: Валидность
@@ -290,9 +361,11 @@
 
     - id: 88
       name: Html валидность
+      parent_id: 87
 
     - id: 89
       name: Css валидность
+      parent_id: 87
 
 - id: 90
   name: Фавиконки
@@ -307,15 +380,19 @@
 
     - id: 93
       name: Amp версия
+      parent_id: 92
 
     - id: 94
       name: Протестирована адаптивность через инструмент Mobile friendly
+      parent_id: 92
 
     - id: 95
       name: Протестирована адаптивность вручную
+      parent_id: 92
 
     - id: 96
       name: Проблемы согласно Google Search Console
+      parent_id: 92
 
 - id: 97
   name: Микроразметка
@@ -324,15 +401,19 @@
 
     - id: 98
       name: Микроразметка контактов организации
+      parent_id: 97
 
     - id: 99
       name: Микроразметка логотипа компании
+      parent_id: 97
 
     - id: 100
       name: Микроразметка товаров, видео
+      parent_id: 97
 
     - id: 101
       name: Микроразметка отзывов и рейтинга
+      parent_id: 97
 
 - id: 102
   name: Интеграция с социальными сетями
@@ -341,18 +422,23 @@
 
     - id: 103
       name: Like/share-кнопки социальных сетей
+      parent_id: 102
 
     - id: 104
       name: Follow-кнопки групп в социальных сетях
+      parent_id: 102
 
     - id: 105
       name: Open Graph
+      parent_id: 102
 
     - id: 106
       name: Twitter Cards
+      parent_id: 102
 
     - id: 107
       name: Настройка для Google+
+      parent_id: 102
 
 - id: 108
   name: Анализ контента
@@ -361,27 +447,35 @@
 
     - id: 109
       name: Размер шрифта
+      parent_id: 108
 
     - id: 110
       name: Цвет шрифта
+      parent_id: 108
 
     - id: 111
       name: Межстрочные интервалы
+      parent_id: 108
 
     - id: 112
       name: Уникальность контента
+      parent_id: 108
 
     - id: 113
       name: Наличие скрытого текста
+      parent_id: 108
 
     - id: 114
       name: Использование списков и заголовков
+      parent_id: 108
 
     - id: 115
       name: Использование мультимедийного контента
+      parent_id: 108
 
     - id: 116
       name: Плотность ключевых слов
+      parent_id: 108
 
 - id: 117
   name: Настройка систем web-аналитики
@@ -390,16 +484,20 @@
 
     - id: 118
       name: Google Analytics
+      parent_id: 117
 
     - id: 119
       name: Яндекс.Метрика
+      parent_id: 117
 
     - id: 120
       name: Google search Console
+      parent_id: 117
 
     - id: 121
       name: Yandex Webmaster tool
+      parent_id: 117
 
 
-- id: 121
+- id: 122
   name: Сайты на одном ip

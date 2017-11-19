@@ -6,7 +6,7 @@
   line-height: 1.5;
 }
 
-.leftColumn {
+.column {
   /* 100% height - header height - margin */
   height: calc(100vh - 64px - 32px);
   overflow-y: auto;
