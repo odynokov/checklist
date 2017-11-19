@@ -83,7 +83,7 @@ export default WrappedComponent => class AppContainer extends React.Component {
 
   removeProject = () => {
     this.setState({
-      project: this.state.projects.filter(item => item !== this.state.current_project),
+      projects: this.state.projects.filter(item => item !== this.state.current_project),
       current_project: null
     });
 

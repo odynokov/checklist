@@ -4,6 +4,7 @@
   font-family: Roboto;
   font-size: 100%;
   line-height: 1.5;
+  position: relative;
 }
 
 .column {
@@ -21,4 +22,10 @@
   margin-bottom: 32px !important;
   display: flex;
   align-items: flex-end;
+}
+
+.createButton {
+  position: fixed !important;
+  bottom: 32px;
+  right: 32px;
 }

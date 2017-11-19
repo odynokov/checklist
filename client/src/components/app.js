@@ -12,10 +12,7 @@ import Select from 'material-ui/Select';
 import {MenuItem} from 'material-ui/Menu';
 import {FormControl} from 'material-ui/Form';
 import Input, {InputLabel} from 'material-ui/Input';
-import IconButton from 'material-ui/IconButton';
 import AddProjectIcon from 'material-ui-icons/Add';
-import RemoveProjectIcon from 'material-ui-icons/Remove';
-import Tooltip from 'material-ui/Tooltip';
 
 export default class App extends React.Component {
 
@@ -69,43 +66,33 @@ export default class App extends React.Component {
           <Grid container spacing={40}>
             <Grid item sm={5} className={styles.column}>
 
-              <div className={styles.flexRow}>
-                {
-                  this.props.projects.length > 0
-                    && (
-                      <FormControl className={styles.formControl}>
-                        <InputLabel htmlFor="project">Текущий проект</InputLabel>
-                        <Select
-                          value={this.props.current_project}
-                          onChange={this.props.changeProject}
-                          input={<Input id="project" />}
-                        >
-                          {this.props.projects.map(item => (
-                            <MenuItem value={item}>{item}</MenuItem>
-                          ))}
-                        </Select>
-                      </FormControl>
-                    )
-                }
+              {
+                this.props.projects.length > 0 && (
+                  <div className={styles.flexRow}>
+                    <FormControl className={styles.formControl}>
+                      <InputLabel htmlFor="project">Текущий проект</InputLabel>
+                      <Select
+                        value={this.props.current_project}
+                        onChange={this.props.changeProject}
+                        input={<Input id="project" />}
+                      >
+                        {this.props.projects.map(item => (
+                          <MenuItem value={item}>{item}</MenuItem>
+                        ))}
+                      </Select>
+                    </FormControl>
 
-                {
-                  this.props.current_project && (
-                    <Tooltip title="Удалить проект">
-                      <IconButton
-                        color="accent"
-                        onClick={this.props.removeProject}
-                      ><RemoveProjectIcon/></IconButton>
-                    </Tooltip>
-                  )
-                }
-
-                <Tooltip title="Создать новый проект">
-                  <IconButton
-                    color="primary"
-                    onClick={this.handleClickOpenCreateDialog}
-                  ><AddProjectIcon/></IconButton>
-                </Tooltip>
-              </div>
+                    {
+                      this.props.current_project && (
+                        <Button
+                          color="accent"
+                          onClick={this.handleClickOpenRemoveDialog}
+                        >Удалить</Button>
+                      )
+                    }
+                  </div>
+                )
+              }
 
               <Tasks
                 onTaskClick={this.props.onTaskClick}
@@ -139,6 +126,13 @@ export default class App extends React.Component {
           open={this.state.removeDialogOpen}
           removeProject={this.props.removeProject}
         />
+
+        <Button
+          className={styles.createButton}
+          fab
+          color="primary"
+          onClick={this.handleClickOpenCreateDialog}
+        ><AddProjectIcon/></Button>
 
       </div>
     );
