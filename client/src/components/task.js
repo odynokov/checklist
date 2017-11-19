@@ -10,7 +10,9 @@ const styles = {
     textAlign: 'left'
   },
   formGroup: {
-    marginLeft: 48,
+    marginLeft: 48
+  },
+  nowrap: {
     flexWrap: 'nowrap'
   },
   active: {
@@ -41,7 +43,7 @@ export default class Task extends React.Component {
     const active = this.props.active_task === this.props.task.id ? styles.active : null;
 
     return (
-      <FormGroup row style={this.props.nested && styles.formGroup}>
+      <FormGroup row style={Object.assign({}, styles.nowrap, this.props.nested && styles.formGroup)}>
         <Checkbox
           disabled={this.props.disabled}
           checked={this.props.checked}

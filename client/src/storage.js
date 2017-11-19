@@ -14,11 +14,21 @@ export function getDoneTasks(current_project) {
 }
 
 export function getProjects() {
-  return JSON.parse(localStorage.getItem(__PROJECTS_KEY__));
+  const saved_projects = JSON.parse(localStorage.getItem(__PROJECTS_KEY__));
+  return saved_projects || [];
 }
 
 export function saveProject(project) {
-  const projects = [...getProjects(), project];
+  const saved_projects = new Set(getProjects());
 
-  localStorage.setItem(__PROJECTS_KEY__, projects);
+  saved_projects.add(project);
+
+  localStorage.setItem(__PROJECTS_KEY__, JSON.stringify([...saved_projects]));
+}
+
+export function removeProject(project) {
+  const saved_projects = new Set(getProjects());
+  saved_projects.delete(project);
+
+  localStorage.setItem(__PROJECTS_KEY__, JSON.stringify([...saved_projects]));
 }

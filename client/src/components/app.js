@@ -7,10 +7,15 @@ import Markdown from 'react-markdown';
 import Button from 'material-ui/Button';
 import styles from './app.css';
 import CreateProjectDialog from './create-project-dialog';
+import RemoveProjectDialog from './remove-project-dialog';
 import Select from 'material-ui/Select';
 import {MenuItem} from 'material-ui/Menu';
 import {FormControl} from 'material-ui/Form';
 import Input, {InputLabel} from 'material-ui/Input';
+import IconButton from 'material-ui/IconButton';
+import AddProjectIcon from 'material-ui-icons/Add';
+import RemoveProjectIcon from 'material-ui-icons/Remove';
+import Tooltip from 'material-ui/Tooltip';
 
 export default class App extends React.Component {
 
@@ -24,7 +29,9 @@ export default class App extends React.Component {
     clearTasks: PropTypes.func.isRequired,
     current_project: PropTypes.string,
     changeProject: PropTypes.func.isRequired,
-    projects: PropTypes.array.isRequired
+    projects: PropTypes.array.isRequired,
+    createProject: PropTypes.func.isRequired,
+    removeProject: PropTypes.func.isRequired
   }
 
   static defaultProps = {
@@ -33,15 +40,24 @@ export default class App extends React.Component {
   }
 
   state = {
-    createDialogOpen: false
+    createDialogOpen: false,
+    removeDialogOpen: false
   }
 
-  handleClickOpenDialog = () => {
+  handleClickOpenCreateDialog = () => {
     this.setState({createDialogOpen: true});
   }
 
-  handleRequestCloseDialog = () => {
+  handleRequestCloseCreateDialog = () => {
     this.setState({createDialogOpen: false});
+  }
+
+  handleClickOpenRemoveDialog = () => {
+    this.setState({removeDialogOpen: true});
+  }
+
+  handleRequestCloseRemoveDialog = () => {
+    this.setState({removeDialogOpen: false});
   }
 
   render() {
@@ -72,12 +88,23 @@ export default class App extends React.Component {
                     )
                 }
 
-                <Button
-                  className={styles.createButton}
-                  color="primary"
-                  onClick={this.handleClickOpenDialog}
-                >Новый проект</Button>
+                {
+                  this.props.current_project && (
+                    <Tooltip title="Удалить проект">
+                      <IconButton
+                        color="accent"
+                        onClick={this.props.removeProject}
+                      ><RemoveProjectIcon/></IconButton>
+                    </Tooltip>
+                  )
+                }
 
+                <Tooltip title="Создать новый проект">
+                  <IconButton
+                    color="primary"
+                    onClick={this.handleClickOpenCreateDialog}
+                  ><AddProjectIcon/></IconButton>
+                </Tooltip>
               </div>
 
               <Tasks
@@ -101,8 +128,16 @@ export default class App extends React.Component {
 
         <CreateProjectDialog
           handleClickOpenDialog={this.handleClickOpenDialog}
-          handleRequestCloseDialog={this.handleRequestCloseDialog}
+          handleRequestCloseDialog={this.handleRequestCloseCreateDialog}
+          createProject={this.props.createProject}
           open={this.state.createDialogOpen}
+        />
+
+        <RemoveProjectDialog
+          handleClickOpenDialog={this.handleClickOpenRemoveDialog}
+          handleRequestCloseDialog={this.handleRequestCloseRemoveDialog}
+          open={this.state.removeDialogOpen}
+          removeProject={this.props.removeProject}
         />
 
       </div>

@@ -11,20 +11,40 @@ import Button from 'material-ui/Button';
 
 export default class CreateProjectDialog extends React.Component {
 
+  state = {
+    project: ''
+  }
+
   static propTypes = {
     open: PropType.bool,
-    handleRequestCloseDialog: PropType.func.isRequired
+    handleRequestCloseDialog: PropType.func.isRequired,
+    createProject: PropType.func.isRequired
+  }
+
+  createProject = () => {
+    this.props.createProject(this.state.project.trim());
+    this.props.handleRequestCloseDialog();
+  }
+
+  handleRequestCloseDialog = () => {
+    this.setState({project: ''});
+    this.props.handleRequestCloseDialog();
+  }
+
+  handleInput = event => {
+    this.setState({project: event.target.value.replace(/^\s+/, '').replace(/\s{2,}$/, ' ')});
   }
 
   render() {
     return (
-      <Dialog open={this.props.open} onRequestClose={this.props.handleRequestCloseDialog}>
+      <Dialog open={this.props.open} onRequestClose={this.handleRequestCloseDialog}>
         <DialogTitle>Новый проект</DialogTitle>
         <DialogContent>
           <DialogContentText>
-            Создав новый проект, ты сможешь отслеживать задачи для него.
+            Создав новый проект, ты сможешь создать отдельный список задач.
           </DialogContentText>
           <TextField
+            value={this.state.project}
             autoFocus
             margin="dense"
             id="URL"
@@ -32,13 +52,14 @@ export default class CreateProjectDialog extends React.Component {
             type="text"
             fullWidth
             required
+            onInput={this.handleInput}
           />
         </DialogContent>
         <DialogActions>
-          <Button onClick={this.props.handleRequestCloseDialog} color="primary">
+          <Button onClick={this.handleRequestCloseDialog} color="primary">
             Отмена
           </Button>
-          <Button onClick={this.props.handleRequestCloseDialog} color="primary">
+          <Button onClick={this.createProject} color="primary">
             Создать
           </Button>
         </DialogActions>

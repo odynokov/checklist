@@ -14,15 +14,11 @@
 
 .formControl {
   width: 100%;
-  margin-right: 16px;
+  margin-right: 16px !important;
 }
 
 .flexRow {
   margin-bottom: 32px !important;
   display: flex;
-  align-items: center;
-}
-
-.createButton {
-  flex-shrink: 0;
+  align-items: flex-end;
 }

@@ -6,11 +6,11 @@ import * as storage from './storage';
 export default WrappedComponent => class AppContainer extends React.Component {
 
   state = {
-    saved_tasks: new Set(storage.getDoneTasks(this.state.current_project)),
+    saved_tasks: new Set(),
     description: null,
     active_task: null,
     current_project: null,
-    projects: []
+    projects: storage.getProjects() || []
   }
 
   onChange = task => (event, value) => {
@@ -66,11 +66,28 @@ export default WrappedComponent => class AppContainer extends React.Component {
   }
 
   changeProject = event => {
-    this.setState({current_project: event.target.value});
+    this.setState({
+      current_project: event.target.value,
+      saved_tasks: new Set(storage.getDoneTasks(event.target.value))
+    });
+
   }
 
-  createProject = name => {
+  createProject = project => {
+    this.setState({
+      projects: [...this.state.projects, project]
+    });
 
+    storage.saveProject(project);
+  }
+
+  removeProject = () => {
+    this.setState({
+      project: this.state.projects.filter(item => item !== this.state.current_project),
+      current_project: null
+    });
+
+    storage.removeProject(this.state.current_project);
   }
 
   render() {
@@ -86,6 +103,8 @@ export default WrappedComponent => class AppContainer extends React.Component {
         current_project={this.state.current_project}
         changeProject={this.changeProject}
         projects={this.state.projects}
+        createProject={this.createProject}
+        removeProject={this.removeProject}
       />
     );
   }
