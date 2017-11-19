@@ -11,3 +11,18 @@
   height: calc(100vh - 64px - 32px);
   overflow-y: auto;
 }
+
+.formControl {
+  width: 100%;
+  margin-right: 16px;
+}
+
+.flexRow {
+  margin-bottom: 32px !important;
+  display: flex;
+  align-items: center;
+}
+
+.createButton {
+  flex-shrink: 0;
+}

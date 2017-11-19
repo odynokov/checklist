@@ -29,7 +29,8 @@ export default class Task extends React.Component {
     task: PropTypes.shape({
       id: PropTypes.number.isRequired,
       name: PropTypes.string.isRequired
-    })
+    }),
+    disabled: PropTypes.bool
   }
 
   static defaultProps = {
@@ -42,6 +43,7 @@ export default class Task extends React.Component {
     return (
       <FormGroup row style={this.props.nested && styles.formGroup}>
         <Checkbox
+          disabled={this.props.disabled}
           checked={this.props.checked}
           onChange={this.props.onChange(this.props.task)}
         />

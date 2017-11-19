@@ -1,16 +1,16 @@
 import React from 'react';
 import tasks from './tasks.yaml';
+import * as storage from './storage';
 
-const __KEY__ = 'checklist:tasks:done';
-
-const local = JSON.parse(localStorage.getItem(__KEY__));
 
 export default WrappedComponent => class AppContainer extends React.Component {
 
   state = {
-    saved_tasks: new Set(local),
+    saved_tasks: new Set(storage.getDoneTasks(this.state.current_project)),
     description: null,
-    active_task: null
+    active_task: null,
+    current_project: null,
+    projects: []
   }
 
   onChange = task => (event, value) => {
@@ -35,9 +35,9 @@ export default WrappedComponent => class AppContainer extends React.Component {
     all_children_tasks_completed
       && saved_tasks.add(parent_task.id);
 
-    localStorage.setItem(__KEY__, JSON.stringify([...saved_tasks]));
-
     this.setState({saved_tasks});
+
+    storage.saveDoneTasks(this.state.current_project, saved_tasks);
   }
 
   onTaskClick = id => () => {
@@ -57,6 +57,22 @@ export default WrappedComponent => class AppContainer extends React.Component {
       });
   }
 
+  clearTasks = () => {
+    const {saved_tasks} = this.state;
+
+    saved_tasks.clear();
+    this.setState({saved_tasks});
+    storage.clearDoneTasks(this.state.current_project);
+  }
+
+  changeProject = event => {
+    this.setState({current_project: event.target.value});
+  }
+
+  createProject = name => {
+
+  }
+
   render() {
     return (
       <WrappedComponent
@@ -66,6 +82,10 @@ export default WrappedComponent => class AppContainer extends React.Component {
         onTaskClick={this.onTaskClick}
         description={this.state.description}
         active_task={this.state.active_task}
+        clearTasks={this.clearTasks}
+        current_project={this.state.current_project}
+        changeProject={this.changeProject}
+        projects={this.state.projects}
       />
     );
   }

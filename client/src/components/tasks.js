@@ -2,7 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Task from './task';
 import Paper from 'material-ui/Paper';
-import styles from './tasks.css';
+
+const styles = {
+  paper: {
+    padding: '8px 16px',
+    marginBottom: 32
+  }
+};
 
 export default class Tasks extends React.Component {
 
@@ -12,7 +18,8 @@ export default class Tasks extends React.Component {
     onTaskClick: PropTypes.func.isRequired,
     nested: PropTypes.bool,
     saved_tasks: PropTypes.array,
-    active_task: PropTypes.number
+    active_task: PropTypes.number,
+    tasks_disabled: PropTypes.bool
   }
 
   static defaultProps = {
@@ -30,6 +37,7 @@ export default class Tasks extends React.Component {
           onTaskClick={this.props.onTaskClick}
           checked={this.props.saved_tasks.has(task.id)}
           active_task={this.props.active_task}
+          disabled={this.props.tasks_disabled}
         />
 
         <Tasks
@@ -39,6 +47,7 @@ export default class Tasks extends React.Component {
           onTaskClick={this.props.onTaskClick}
           saved_tasks={this.props.saved_tasks}
           active_task={this.props.active_task}
+          tasks_disabled={this.props.tasks_disabled}
         />
       </div>
     );
@@ -51,7 +60,7 @@ export default class Tasks extends React.Component {
         {this.props.tasks.map(task => (
           this.props.nested
             ? <div>{this.task(task)}</div>
-            : <Paper className={styles.paper}>{this.task(task)}</Paper>
+            : <Paper style={styles.paper}>{this.task(task)}</Paper>
         ))}
       </div>
     );
