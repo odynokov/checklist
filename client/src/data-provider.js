@@ -10,7 +10,9 @@ export default WrappedComponent => class AppContainer extends React.Component {
     description: null,
     active_task: null,
     current_project: null,
-    projects: storage.getProjects() || []
+    projects: storage.getProjects() || [],
+    snackbar_open: false,
+    snackbar_message: ''
   }
 
   onChange = task => (event, value) => {
@@ -74,21 +76,48 @@ export default WrappedComponent => class AppContainer extends React.Component {
   }
 
   createProject = project => {
+
+    if (this.state.projects.indexOf(project) >= 0) {
+      this.showSnackbar('Проект с таким названием уже есть.');
+
+      return;
+    }
+
     this.setState({
       projects: [...this.state.projects, project]
     });
 
     storage.saveProject(project);
+
+    this.showSnackbar('Проект создан.');
   }
 
   removeProject = () => {
     this.setState({
       projects: this.state.projects.filter(item => item !== this.state.current_project),
-      current_project: null
+      current_project: null,
+      saved_tasks: new Set()
     });
 
     storage.removeProject(this.state.current_project);
+
+    this.showSnackbar('Проект удалён.');
   }
+
+  showSnackbar = snackbar_message => {
+    this.setState({
+      snackbar_message,
+      snackbar_open: true
+    });
+  }
+
+  handleRequestSnackbarClose = (event, reason) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+
+    this.setState({snackbar_open: false});
+  };
 
   render() {
     return (
@@ -105,6 +134,9 @@ export default WrappedComponent => class AppContainer extends React.Component {
         projects={this.state.projects}
         createProject={this.createProject}
         removeProject={this.removeProject}
+        snackbar_open={this.state.snackbar_open}
+        snackbar_message={this.state.snackbar_message}
+        handleRequestSnackbarClose={this.handleRequestSnackbarClose}
       />
     );
   }

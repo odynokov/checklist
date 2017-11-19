@@ -13,6 +13,7 @@ import {MenuItem} from 'material-ui/Menu';
 import {FormControl} from 'material-ui/Form';
 import Input, {InputLabel} from 'material-ui/Input';
 import AddProjectIcon from 'material-ui-icons/Add';
+import Snackbar from 'material-ui/Snackbar';
 
 export default class App extends React.Component {
 
@@ -28,7 +29,10 @@ export default class App extends React.Component {
     changeProject: PropTypes.func.isRequired,
     projects: PropTypes.array.isRequired,
     createProject: PropTypes.func.isRequired,
-    removeProject: PropTypes.func.isRequired
+    removeProject: PropTypes.func.isRequired,
+    handleRequestSnackbarClose: PropTypes.func.isRequired,
+    snackbar_message: PropTypes.string,
+    snackbar_open: PropTypes.bool
   }
 
   static defaultProps = {
@@ -70,7 +74,7 @@ export default class App extends React.Component {
                 this.props.projects.length > 0 && (
                   <div className={styles.flexRow}>
                     <FormControl className={styles.formControl}>
-                      <InputLabel htmlFor="project">Текущий проект</InputLabel>
+                      <InputLabel htmlFor="project">Выбери проект</InputLabel>
                       <Select
                         value={this.props.current_project}
                         onChange={this.props.changeProject}
@@ -133,6 +137,17 @@ export default class App extends React.Component {
           color="primary"
           onClick={this.handleClickOpenCreateDialog}
         ><AddProjectIcon/></Button>
+
+        <Snackbar
+          anchorOrigin={{
+            vertical: 'top',
+            horizontal: 'right'
+          }}
+          onRequestClose={this.props.handleRequestSnackbarClose}
+          open={this.props.snackbar_open}
+          autoHideDuration={2000}
+          message={this.props.snackbar_message}
+        />
 
       </div>
     );

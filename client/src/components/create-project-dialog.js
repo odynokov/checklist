@@ -23,6 +23,7 @@ export default class CreateProjectDialog extends React.Component {
 
   createProject = () => {
     this.props.createProject(this.state.project.trim());
+    this.setState({project: ''});
     this.props.handleRequestCloseDialog();
   }
 
