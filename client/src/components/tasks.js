@@ -2,13 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Task from './task';
 import Paper from 'material-ui/Paper';
-
-const styles = {
-  paper: {
-    marginBottom: 32,
-    padding: '8px 16px'
-  }
-};
+import styles from './tasks.css';
 
 export default class Tasks extends React.Component {
 
@@ -57,7 +51,7 @@ export default class Tasks extends React.Component {
         {this.props.tasks.map(task => (
           this.props.nested
             ? <div>{this.task(task)}</div>
-            : <Paper style={styles.paper}>{this.task(task)}</Paper>
+            : <Paper className={styles.paper}>{this.task(task)}</Paper>
         ))}
       </div>
     );

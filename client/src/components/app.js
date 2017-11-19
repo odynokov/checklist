@@ -4,16 +4,7 @@ import Grid from 'material-ui/Grid';
 import Tasks from './tasks';
 import Toolbar from './toolbar';
 import Markdown from 'react-markdown';
-
-const styles = {
-  main: {
-    margin: '32px auto',
-    maxWidth: 1240,
-    fontFamily: 'Roboto',
-    fontSize: '100%',
-    lineHeight: 1.5
-  }
-};
+import styles from './app.css';
 
 export default class App extends React.Component {
 
@@ -36,9 +27,9 @@ export default class App extends React.Component {
       <div>
         <Toolbar title="SEO Checklist"/>
 
-        <main style={styles.main}>
+        <main className={styles.main}>
           <Grid container spacing={40}>
-            <Grid item sm={5}>
+            <Grid item sm={5} className={styles.leftColumn}>
               <Tasks
                 onTaskClick={this.props.onTaskClick}
                 onChange={this.props.onChange}

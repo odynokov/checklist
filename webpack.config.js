@@ -6,8 +6,7 @@ const config = {
   entry: path.resolve('client/src/bootstrap.js'),
   output: {
     path: path.resolve('dist'),
-    filename: 'main.js',
-    publicPath: '/'
+    filename: 'main.js'
   },
 
   module: {
@@ -53,7 +52,7 @@ const config = {
   plugins: [
     new HtmlWebpackPlugin({
       template: path.resolve('client/src/template.html'),
-      filename: path.join(path.resolve('dist/index.html'))
+      filename: path.join(path.resolve('./dist/index.html'))
     }),
     new webpack.DefinePlugin({
       'process.env': {

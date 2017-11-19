@@ -1,0 +1,7 @@
+.paper {
+  padding: 8px 16px;
+}
+
+.paper:not(:last-child) {
+  margin-bottom: 32px;
+}

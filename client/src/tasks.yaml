@@ -1,61 +1,405 @@
 
 - id: 1
-  name: 'Проверка настроек robots.txt'
+  name: Url и генерация возможных дублей
 
   children:
+
     - id: 2
-      name: 'Спецсимволы'
-      parent_id: 1
+      name: Регистр
 
     - id: 3
-      name: 'host'
-      parent_id: 1
+      name: Разделитель слов
 
     - id: 4
-      name: 'sitemap.xml'
-      parent_id: 1
+      name: Friendly url
 
     - id: 5
-      name: 'наличие пустой строки между группой User-Agent / Disallow'
-      parent_id: 1
+      name: Язык
 
     - id: 6
-      name: 'Clean-param (Яндекс)'
-      parent_id: 1
+      name: Множественные спеши/тире в url
 
     - id: 7
-      name: 'Разрешение на идексацию css/js'
-      parent_id: 1
+      name: Основное зеркало
 
-- id: 8
-  name: 'sitemap.xml'
+    - id: 8
+      name: Доступность по расширениям индексного файла
+
+- id: 9
+  name: Проверка настроек robots.txt
 
   children:
-    - id: 9
-      name: 'xml карта для мультимедийного контента'
-      parent_id: 8
-
-
     - id: 10
-      name: 'ссылки с ответом сервера 4xx'
-      parent_id: 8
+      name: Спецсимволы
 
     - id: 11
-      name: 'ссылки с ответом сервера 5xx'
-      parent_id: 8
+      name: host
 
     - id: 12
-      name: 'ссылки с редиректом'
-      parent_id: 8
+      name: sitemap.xml
 
     - id: 13
-      name: 'ссылки на страницы, закрытые в robots.txt'
-      parent_id: 8
+      name: наличие пустой строки между группой User-Agent / Disallow
 
-- id: 14
-  name: 'sitemap.html'
+    - id: 14
+      name: Clean-param (Яндекс)
+
+    - id: 15
+      name: Обязательные страницы для disallow
+
+    - id: 16
+      name: Проверяем данные Google Search Console
+
+- id: 17
+  name: sitemap.xml
+
+  children:
+    - id: 18
+      name: xml карта для мультимедийного контента
+
+
+    - id: 19
+      name: ссылки с ответом сервера 4xx
+
+    - id: 20
+      name: ссылки с ответом сервера 5xx
+
+    - id: 21
+      name: ссылки с редиректом
+
+    - id: 22
+      name: ссылки на страницы, закрытые в robots.txt
+
+    - id: 23
+      name: Проверяем данные Google Search Console
+
+- id: 24
+  name: sitemap.html
+
+- id: 25
+  name: Структура
+
+  children:
+    - id: 26
+      name: Хлебные крошки
+
+    - id: 27
+      name: Вложенности
+
+    - id: 28
+      name: Циклические ссылки
+
+    - id: 29
+      name: Внутренняя перелинковка
+
+    - id: 30
+      name: Иерархия html заголовков
+
+    - id: 31
+      name: Silo - архитектура сайта
 
 
 
+- id: 32
+  name: http/https
+
+  children:
+
+    - id: 33
+      name: Использование ssl-сертификата
+
+    - id: 34
+      name: Корректность настройки редиректов
+
+    - id: 35
+      name: Strict-Transport-Security
+
+    - id: 36
+      name: Last-Modified
+
+    - id: 37
+      name: If-Modified-Since
+
+    - id: 38
+      name: Cache-Control
+
+    - id: 39
+      name: Expires
+
+    - id: 40
+      name: ETag
+
+    - id: 41
+      name: Vary
+
+    - id: 42
+      name: X-XSS-Protection и X-Frame-Options
+
+- id: 43
+  name: Пагинация
+
+  children:
+
+    - id: 44
+      name: canonical для Яндекс
+
+    - id: 45
+      name: next/prev для Google
+
+    - id: 46
+      name: № страницы в title/desc
+
+    - id: 47
+      name: Дубли первой страницы
+
+- id: 48
+  name: Языковые версии
+
+  children:
+
+    - id: 49
+      name: Наличие hreflang
+
+    - id: 50
+      name: корректность url адресов в hreflang
+
+    - id: 51
+      name: корректность кода языка
+
+    - id: 52
+      name: корректность кода страны
+
+    - id: 53
+      name: Другие ошибки согласно Screaming Frog
+
+    - id: 54
+      name: Другие ошибки согласно Google Search Console
+
+- id: 55
+  name: Мета-данные
+
+  children:
+
+    - id: 56
+      name: Отсутствует title
+
+    - id: 57
+      name: Дублируется title
+
+    - id: 58
+      name: Слишком короткий title
+
+    - id: 59
+      name: title совпадает с h1
+
+    - id: 60
+      name: Отсутствует description
+
+    - id: 61
+      name: Дублируется description
+
+    - id: 62
+      name: Слишком короткий description
+
+    - id: 63
+      name: Другие ошибки согласно Google Search Console
+
+- id: 64
+  name: Заголовок h1
+
+  children:
+
+    - id: 65
+      name: Отсутствует h1
+
+    - id: 66
+      name: Дублируется h1
+
+- id: 67
+  name: Редиректы и ошибки
+
+  children:
+
+    - id: 68
+      name: Наличие страниц с ответом сервера 4xx
+
+    - id: 69
+      name: Наличие ссылок с 3xx редиректами
+
+- id: 70
+  name: Оформление 404 страницы
+
+  children:
+
+    - id: 71
+      name: Дизайн страницы совпадает с дизайном сайта
+
+    - id: 72
+      name: Есть ссылка на главную страницу и основные разделы
+
+    - id: 73
+      name: Есть строка поиска
+
+    - id: 74
+      name: Есть информация о том, почему посетитель видит данную страницу
+
+    - id: 75
+      name: Ответ кода данной страницы
+
+- id: 76
+  name: Скорость сайта
+
+  children:
+
+    - id: 77
+      name: Время Start render
+
+    - id: 78
+      name: Время first byte
+
+    - id: 79
+      name: Оптимизация изображений
+
+    - id: 80
+      name: Кеширование
+
+    - id: 81
+      name: Keep-Alive
+
+    - id: 82
+      name: Корректность встраивания js/css
+
+    - id: 83
+      name: Другие проблемы согласно Gtmetrics и GPS
+
+- id: 84
+  name: Оптимизация изображений
+
+  children:
+
+    - id: 85
+      name: Наличие alt
+
+    - id: 86
+      name: Наличие title
+
+- id: 87
+  name: Валидность
+
+  children:
+
+    - id: 88
+      name: Html валидность
+
+    - id: 89
+      name: Css валидность
+
+- id: 90
+  name: Фавиконки
+
+- id: 91
+  name: Внешние ссылки на сайте
+
+- id: 92
+  name: Мобильная версия сайта
+
+  children:
+
+    - id: 93
+      name: Amp версия
+
+    - id: 94
+      name: Протестирована адаптивность через инструмент Mobile friendly
+
+    - id: 95
+      name: Протестирована адаптивность вручную
+
+    - id: 96
+      name: Проблемы согласно Google Search Console
+
+- id: 97
+  name: Микроразметка
+
+  children:
+
+    - id: 98
+      name: Микроразметка контактов организации
+
+    - id: 99
+      name: Микроразметка логотипа компании
+
+    - id: 100
+      name: Микроразметка товаров, видео
+
+    - id: 101
+      name: Микроразметка отзывов и рейтинга
+
+- id: 102
+  name: Интеграция с социальными сетями
+
+  children:
+
+    - id: 103
+      name: Like/share-кнопки социальных сетей
+
+    - id: 104
+      name: Follow-кнопки групп в социальных сетях
+
+    - id: 105
+      name: Open Graph
+
+    - id: 106
+      name: Twitter Cards
+
+    - id: 107
+      name: Настройка для Google+
+
+- id: 108
+  name: Анализ контента
+
+  children:
+
+    - id: 109
+      name: Размер шрифта
+
+    - id: 110
+      name: Цвет шрифта
+
+    - id: 111
+      name: Межстрочные интервалы
+
+    - id: 112
+      name: Уникальность контента
+
+    - id: 113
+      name: Наличие скрытого текста
+
+    - id: 114
+      name: Использование списков и заголовков
+
+    - id: 115
+      name: Использование мультимедийного контента
+
+    - id: 116
+      name: Плотность ключевых слов
+
+- id: 117
+  name: Настройка систем web-аналитики
+
+  children:
+
+    - id: 118
+      name: Google Analytics
+
+    - id: 119
+      name: Яндекс.Метрика
+
+    - id: 120
+      name: Google search Console
+
+    - id: 121
+      name: Yandex Webmaster tool
 
 
+- id: 121
+  name: Сайты на одном ip
